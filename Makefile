@@ -1,38 +1,60 @@
 all: trim
 
-.PHONY clean
-.PHONY trim
+.PHONY: clean
+.PHONY: extract
 
-NDK_VERSION="r10d"
-NDK_ARCHIVE="android-ndk-${NDK_VERSION}-darwin-x86_64.bin"
-ANDROID_PLATFORMS="android-17|android-18|android-19|android-21"
-STDLIBS="llvm-libc++|llvm-libc++abi|gabi++|system"
-TOOLCHAINS=".*clang3\.5|.*llvm-3\.5"
+NDK=android-ndk-r10d
+NDK_ARCHIVE=${NDK}-darwin-x86_64.bin
+
+#Android platforms
+FILES += ${NDK}/platforms/android-17
+FILES += ${NDK}/platforms/android-18
+FILES += ${NDK}/platforms/android-19
+FILES += ${NDK}/platforms/android-21
+#Standard libraries
+FILES += ${NDK}/sources/cxx-stl/llvm-libc++
+FILES += ${NDK}/sources/cxx-stl/llvm-libc++abi
+FILES += ${NDK}/sources/cxx-stl/gabi++
+FILES += ${NDK}/sources/cxx-stl/system
+#Toolchains
+FILES += ${NDK}/toolchains/aarch64-linux-android-4.9
+FILES += ${NDK}/toolchains/arm-linux-androideabi-4.9
+FILES += ${NDK}/toolchains/x86-4.9
+FILES += ${NDK}/toolchains/x86_64-4.9
+#Unaltered files
+FILES += ${NDK}/build
+FILES += ${NDK}/prebuilt
+FILES += ${NDK}/sources/cpufeatures
+FILES += ${NDK}/sources/android
+FILES += ${NDK}/sources/third_party
+FILES += ${NDK}/tests
+FILES += ${NDK}/GNUmakefile
+FILES += ${NDK}/README.TXT
+FILES += ${NDK}/RELEASE.TXT
+FILES += ${NDK}/find-win-host.cmd
+FILES += ${NDK}/ndk-build
+FILES += ${NDK}/ndk-build.cmd
+FILES += ${NDK}/ndk-depends
+FILES += ${NDK}/ndk-gdb
+FILES += ${NDK}/ndk-gdb-py
+FILES += ${NDK}/ndk-gdb-py.cmd
+FILES += ${NDK}/ndk-gdb.py
+FILES += ${NDK}/ndk-stack
+FILES += ${NDK}/ndk-which
+FILES += ${NDK}/remove-windows-symlink.sh
 
 clean: 
-	echo "Cleaning all NDK files..."
-	ls | grep -v "${NDK_ARCHIVE}|Makefile" | xargs rm -rf
-	echo "Done cleaning."
+	@echo Cleaning all NDK files...
+	rm -rf ${NDK}
+	@echo Done cleaning.
 
 ${NDK_ARCHIVE}:
-	echo "Downloading NDK archive..."
+	@echo Downloading NDK archive...
 	wget http://dl.google.com/android/ndk/${NDK_ARCHIVE}
 
-RELEASE.TXT: ${NDK_ARCHIVE}
-	echo "Expanding NDK archive..."
-	chmod a+x ${NDK_ARCHIVE}
-    ./${NDK_ARCHIVE}
-    echo "Done expanding."
-
-trim: RELEASE.TXT
-	echo "Trimming NDK..."
-	echo "Trimming Platforms..."
-	ls platforms | egrep -v $ANDROID_PLATFORMS | xargs rm -rf
-	echo "Trimming cxx-stl..."
-	ls sources/cxx-stl | egrep -v $STDLIBS | xargs rm -rf
-	echo "Trimming toolchains..."
-	ls toolchains | egrep -v $TOOLCHAINS | xargs rm -rf
-	echo "Done trimming."
-
+extract: ${NDK_ARCHIVE}
+	@echo Extracting...
+	7z x ${NDK_ARCHIVE} ${FILES} | egrep -v Skipping
+	@echo Done extracting.
 
 
