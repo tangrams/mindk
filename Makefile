@@ -10,14 +10,12 @@ NDK_ARCHIVE=${NDK}-darwin-x86_64.bin
 FILES += ${NDK}/platforms/android-17
 FILES += ${NDK}/platforms/android-18
 FILES += ${NDK}/platforms/android-19
-FILES += ${NDK}/platforms/android-21
 #Standard libraries
 FILES += ${NDK}/sources/cxx-stl/llvm-libc++
 FILES += ${NDK}/sources/cxx-stl/llvm-libc++abi
 FILES += ${NDK}/sources/cxx-stl/gabi++
 FILES += ${NDK}/sources/cxx-stl/system
 #Toolchains
-FILES += ${NDK}/toolchains/aarch64-linux-android-4.9
 FILES += ${NDK}/toolchains/arm-linux-androideabi-4.9
 FILES += ${NDK}/toolchains/x86-4.9
 FILES += ${NDK}/toolchains/x86_64-4.9
