@@ -40,6 +40,11 @@ FILES += ${NDK}/remove-windows-symlink.sh
 
 EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/.gitignore
 EXCLUDES += ${NDK}/sources/cxx-stl/gabi++/.gitignore
+EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/libs/arm64-v8a
+EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a-hard
+EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/libs/mips
+EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/libs/mips64
+EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/libs/x86_64
 EXCLUDES += ${NDK}/prebuilt/darwin-x86_64/lib
 
 clean: 
