@@ -41,6 +41,9 @@ FILES += ${NDK}/ndk-stack
 FILES += ${NDK}/ndk-which
 FILES += ${NDK}/remove-windows-symlink.sh
 
+EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/.gitignore
+EXCLUDES += ${NDK}/sources/cxx-stl/gabi++/.gitignore
+
 clean: 
 	@echo Cleaning all NDK files...
 	rm -rf ${NDK}
@@ -50,9 +53,12 @@ ${NDK_ARCHIVE}:
 	@echo Downloading NDK archive...
 	wget http://dl.google.com/android/ndk/${NDK_ARCHIVE}
 
-extract: ${NDK_ARCHIVE}
+extract:
 	@echo Extracting...
 	7z x ${NDK_ARCHIVE} ${FILES} | egrep -v Skipping
 	@echo Done extracting.
+	@echo Cleaning up...
+	rm -rf ${EXCLUDES}
+	@echo Done.
 
 
