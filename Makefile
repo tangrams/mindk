@@ -7,8 +7,6 @@ NDK=android-ndk-r10d
 NDK_ARCHIVE=${NDK}-darwin-x86_64.bin
 
 #Android platforms
-FILES += ${NDK}/platforms/android-17
-FILES += ${NDK}/platforms/android-18
 FILES += ${NDK}/platforms/android-19
 #Standard libraries
 FILES += ${NDK}/sources/cxx-stl/llvm-libc++
