@@ -43,6 +43,7 @@ FILES += ${NDK}/remove-windows-symlink.sh
 
 EXCLUDES += ${NDK}/sources/cxx-stl/llvm-libc++/.gitignore
 EXCLUDES += ${NDK}/sources/cxx-stl/gabi++/.gitignore
+EXCLUDES += ${NDK}/prebuilt/darwin-x86_64/lib
 
 clean: 
 	@echo Cleaning all NDK files...
