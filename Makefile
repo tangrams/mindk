@@ -18,7 +18,6 @@ FILES += ${NDK}/sources/cxx-stl/system
 #Toolchains
 FILES += ${NDK}/toolchains/arm-linux-androideabi-4.9
 FILES += ${NDK}/toolchains/x86-4.9
-FILES += ${NDK}/toolchains/x86_64-4.9
 #Unaltered files
 FILES += ${NDK}/build
 FILES += ${NDK}/prebuilt
