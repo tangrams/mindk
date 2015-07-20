@@ -3,7 +3,7 @@ all: extract
 .PHONY: clean
 .PHONY: extract
 
-NDK=android-ndk-r10d
+NDK=android-ndk-r10e
 OS=darwin-x86_64
 ANDROID_PLATFORM=19
 STL=llvm-libc++
