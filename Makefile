@@ -22,50 +22,59 @@ EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/.gitignore
 
 #Toolchains
 ifeq (${TOOLCHAIN},gcc)
-	TOOL_NAME=
+	GCC_VERSION=${TOOLCHAIN_VERSION}
 else ifeq (${TOOLCHAIN},clang)
-	TOOL_NAME=clang
+	CLANG=clang${TOOLCHAIN_VERSION}
 	FILES += ${NDK}/toolchains/llvm-${TOOLCHAIN_VERSION}
+	GCC_VERSION=4.8
 endif
 
 #Select files by architecture
 ifneq (,$(filter arm64-v8a,${ARCH}))
-	FILES += ${NDK}/toolchains/aarch64-linux-android-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/aarch64-linux-android-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/aarch64-linux-android-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/arm64-v8a
 endif
 ifneq (,$(filter armeabi,${ARCH}))
-	FILES += ${NDK}/toolchains/arm-linux-androideabi-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/arm-linux-androideabi-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/arm-linux-androideabi-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/armeabi
 endif
 ifneq (,$(filter armeabi-v7a,${ARCH}))
-	FILES += ${NDK}/toolchains/arm-linux-androideabi-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/arm-linux-androideabi-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/arm-linux-androideabi-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/armeabi-v7a
 endif
 ifneq (,$(filter armeabi-v7a-hard,${ARCH}))
-	FILES += ${NDK}/toolchains/arm-linux-androideabi-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/arm-linux-androideabi-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/arm-linux-androideabi-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/armeabi-v7a-hard
 endif
 ifneq (,$(filter mips,${ARCH}))
-	FILES += ${NDK}/toolchains/mipsel-linux-android-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/mipsel-linux-android-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/mipsel-linux-android-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/mips
 endif
 ifneq (,$(filter mips64,${ARCH}))
-	FILES += ${NDK}/toolchains/mipsel64el-linux-android-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/mipsel64el-linux-android-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/mipsel64el-linux-android-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/mips64
 endif
 ifneq (,$(filter x86,${ARCH}))
-	FILES += ${NDK}/toolchains/x86-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/x86-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/x86-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/x86
 endif
 ifneq (,$(filter x86_64,${ARCH}))
-	FILES += ${NDK}/toolchains/x86_64-${TOOL_NAME}${TOOLCHAIN_VERSION}
+	FILES += ${NDK}/toolchains/x86_64-${GCC_VERSION}
+	FILES += ${NDK}/toolchains/x86_64-${CLANG}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/x86_64
 endif
