@@ -13,6 +13,12 @@ ARCH=armeabi-v7a
 
 NDK_ARCHIVE=${NDK}-${OS}.bin
 
+ifneq (,$(findstring Linux,$(shell uname -s)))
+	7Z=7zr
+else
+	7Z=7z
+endif
+
 #Android platform
 FILES += ${NDK}/platforms/android-${ANDROID_PLATFORM}
 
@@ -114,7 +120,7 @@ ${NDK_ARCHIVE}:
 
 extract: ${NDK_ARCHIVE}
 	@echo Extracting...
-	7z x ${NDK_ARCHIVE} ${FILES} | egrep -v Skipping
+	${7Z} x ${NDK_ARCHIVE} ${FILES} | egrep -v Skipping
 	@echo Done extracting.
 	@echo Cleaning up...
 	rm -rf ${EXCLUDES}
