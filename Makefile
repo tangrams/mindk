@@ -29,42 +29,42 @@ else ifeq (${TOOLCHAIN},clang)
 endif
 
 #Select files by architecture
-ifeq (${ARCH},arm64-v8a)
+ifneq (,$(filter arm64-v8a,${ARCH}))
 	FILES += ${NDK}/toolchains/aarch64-linux-android-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/arm64-v8a
 endif
-ifeq (${ARCH},armeabi)
+ifneq (,$(filter armeabi,${ARCH}))
 	FILES += ${NDK}/toolchains/arm-linux-androideabi-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/armeabi
 endif
-ifeq (${ARCH},armeabi-v7a)
+ifneq (,$(filter armeabi-v7a,${ARCH}))
 	FILES += ${NDK}/toolchains/arm-linux-androideabi-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/armeabi-v7a
 endif
-ifeq (${ARCH},armeabi-v7a-hard)
+ifneq (,$(filter armeabi-v7a-hard,${ARCH}))
 	FILES += ${NDK}/toolchains/arm-linux-androideabi-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/armeabi-v7a-hard
 endif
-ifeq (${ARCH},mips)
+ifneq (,$(filter mips,${ARCH}))
 	FILES += ${NDK}/toolchains/mipsel-linux-android-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/mips
 endif
-ifeq (${ARCH},mips64)
+ifneq (,$(filter mips64,${ARCH}))
 	FILES += ${NDK}/toolchains/mipsel64el-linux-android-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/mips64
 endif
-ifeq (${ARCH},x86)
+ifneq (,$(filter x86,${ARCH}))
 	FILES += ${NDK}/toolchains/x86-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/x86
 endif
-ifeq (${ARCH},x86_64)
+ifneq (,$(filter x86_64,${ARCH}))
 	FILES += ${NDK}/toolchains/x86_64-${TOOL_NAME}${TOOLCHAIN_VERSION}
 else
 	EXCLUDES += ${NDK}/sources/cxx-stl/${STL}/libs/x86_64
