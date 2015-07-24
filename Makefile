@@ -85,7 +85,6 @@ FILES += ${NDK}/prebuilt
 FILES += ${NDK}/sources/cpufeatures
 FILES += ${NDK}/sources/android
 FILES += ${NDK}/sources/third_party
-FILES += ${NDK}/tests
 FILES += ${NDK}/GNUmakefile
 FILES += ${NDK}/README.TXT
 FILES += ${NDK}/RELEASE.TXT
