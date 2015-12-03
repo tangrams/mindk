@@ -3,12 +3,12 @@ all: extract
 .PHONY: clean
 .PHONY: extract
 
-NDK=android-ndk-r10d
-OS=darwin-x86_64
-ANDROID_PLATFORM=19
+NDK=android-ndk-r10e
+OS=linux-x86_64
+ANDROID_PLATFORM=15
 STL=llvm-libc++
-TOOLCHAIN=gcc
-TOOLCHAIN_VERSION=4.9
+TOOLCHAIN=clang
+TOOLCHAIN_VERSION=3.6
 ARCH=armeabi-v7a
 
 NDK_ARCHIVE=${NDK}-${OS}.bin
